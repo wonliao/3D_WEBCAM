@@ -86,8 +86,8 @@
     
 
     // Initial array of movie URLs
-    NSString* filePath1 = [[NSBundle mainBundle] pathForResource:@"1" ofType:@"mov"];
-    NSString* filePath2 = [[NSBundle mainBundle] pathForResource:@"2" ofType:@"mov"];
+    NSString* filePath1 = [[NSBundle mainBundle] pathForResource:@"left2" ofType:@"mov"];
+    NSString* filePath2 = [[NSBundle mainBundle] pathForResource:@"right2" ofType:@"mov"];
     
     NSArray *myMovieURLs = [NSArray arrayWithObjects:
                             [NSURL fileURLWithPath:filePath1],
