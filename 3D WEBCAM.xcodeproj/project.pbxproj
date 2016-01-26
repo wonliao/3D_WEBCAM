@@ -1,0 +1,329 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		341AB73E1AE9387F00D5D30A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 341AB73D1AE9387F00D5D30A /* AppDelegate.m */; };
+		341AB7401AE9387F00D5D30A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 341AB73F1AE9387F00D5D30A /* main.m */; };
+		341AB7421AE9387F00D5D30A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 341AB7411AE9387F00D5D30A /* Images.xcassets */; };
+		341AB7451AE9387F00D5D30A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 341AB7431AE9387F00D5D30A /* MainMenu.xib */; };
+		341AB75C1AE938AE00D5D30A /* CamView.m in Sources */ = {isa = PBXBuildFile; fileRef = 341AB75B1AE938AE00D5D30A /* CamView.m */; };
+		341AB7601AE938D400D5D30A /* DualCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 341AB75E1AE938D400D5D30A /* DualCamViewController.m */; };
+		341AB7611AE938D400D5D30A /* DualCamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 341AB75F1AE938D400D5D30A /* DualCamViewController.xib */; };
+		BC2234CC1C54C589005C91CD /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2234CB1C54C589005C91CD /* CoreMedia.framework */; };
+		BC2234CF1C54C73A005C91CD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2234C71C54C549005C91CD /* AVFoundation.framework */; };
+		BC2234D21C54C7EB005C91CD /* 1.mov in Resources */ = {isa = PBXBuildFile; fileRef = BC2234D01C54C7EB005C91CD /* 1.mov */; };
+		BC2234D31C54C7EB005C91CD /* 2.mov in Resources */ = {isa = PBXBuildFile; fileRef = BC2234D11C54C7EB005C91CD /* 2.mov */; };
+		BC2234D41C54D3A6005C91CD /* MediaLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2234C91C54C561005C91CD /* MediaLibrary.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		341AB7371AE9387F00D5D30A /* 3D WEBCAM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "3D WEBCAM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		341AB73B1AE9387F00D5D30A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		341AB73C1AE9387F00D5D30A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		341AB73D1AE9387F00D5D30A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		341AB73F1AE9387F00D5D30A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		341AB7411AE9387F00D5D30A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		341AB7441AE9387F00D5D30A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		341AB75A1AE938AE00D5D30A /* CamView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CamView.h; sourceTree = "<group>"; };
+		341AB75B1AE938AE00D5D30A /* CamView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CamView.m; sourceTree = "<group>"; };
+		341AB75D1AE938D400D5D30A /* DualCamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DualCamViewController.h; sourceTree = "<group>"; };
+		341AB75E1AE938D400D5D30A /* DualCamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DualCamViewController.m; sourceTree = "<group>"; };
+		341AB75F1AE938D400D5D30A /* DualCamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DualCamViewController.xib; sourceTree = "<group>"; };
+		BC2234C71C54C549005C91CD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BC2234C91C54C561005C91CD /* MediaLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaLibrary.framework; path = System/Library/Frameworks/MediaLibrary.framework; sourceTree = SDKROOT; };
+		BC2234CB1C54C589005C91CD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		BC2234CD1C54C5BC005C91CD /* MediaToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaToolbox.framework; path = System/Library/Frameworks/MediaToolbox.framework; sourceTree = SDKROOT; };
+		BC2234D01C54C7EB005C91CD /* 1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 1.mov; sourceTree = "<group>"; };
+		BC2234D11C54C7EB005C91CD /* 2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 2.mov; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		341AB7341AE9387F00D5D30A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC2234D41C54D3A6005C91CD /* MediaLibrary.framework in Frameworks */,
+				BC2234CF1C54C73A005C91CD /* AVFoundation.framework in Frameworks */,
+				BC2234CC1C54C589005C91CD /* CoreMedia.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		341AB72E1AE9387F00D5D30A = {
+			isa = PBXGroup;
+			children = (
+				BC2234CD1C54C5BC005C91CD /* MediaToolbox.framework */,
+				BC2234CB1C54C589005C91CD /* CoreMedia.framework */,
+				BC2234C91C54C561005C91CD /* MediaLibrary.framework */,
+				BC2234C71C54C549005C91CD /* AVFoundation.framework */,
+				341AB7391AE9387F00D5D30A /* DualCam */,
+				341AB7381AE9387F00D5D30A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		341AB7381AE9387F00D5D30A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				341AB7371AE9387F00D5D30A /* 3D WEBCAM.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		341AB7391AE9387F00D5D30A /* DualCam */ = {
+			isa = PBXGroup;
+			children = (
+				341AB73C1AE9387F00D5D30A /* AppDelegate.h */,
+				341AB73D1AE9387F00D5D30A /* AppDelegate.m */,
+				341AB7411AE9387F00D5D30A /* Images.xcassets */,
+				341AB7431AE9387F00D5D30A /* MainMenu.xib */,
+				341AB73A1AE9387F00D5D30A /* Supporting Files */,
+				341AB75A1AE938AE00D5D30A /* CamView.h */,
+				341AB75B1AE938AE00D5D30A /* CamView.m */,
+				341AB75D1AE938D400D5D30A /* DualCamViewController.h */,
+				341AB75E1AE938D400D5D30A /* DualCamViewController.m */,
+				341AB75F1AE938D400D5D30A /* DualCamViewController.xib */,
+			);
+			path = DualCam;
+			sourceTree = "<group>";
+		};
+		341AB73A1AE9387F00D5D30A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BC2234D01C54C7EB005C91CD /* 1.mov */,
+				BC2234D11C54C7EB005C91CD /* 2.mov */,
+				341AB73B1AE9387F00D5D30A /* Info.plist */,
+				341AB73F1AE9387F00D5D30A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		341AB7361AE9387F00D5D30A /* 3D WEBCAM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 341AB7541AE9387F00D5D30A /* Build configuration list for PBXNativeTarget "3D WEBCAM" */;
+			buildPhases = (
+				341AB7331AE9387F00D5D30A /* Sources */,
+				341AB7341AE9387F00D5D30A /* Frameworks */,
+				341AB7351AE9387F00D5D30A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "3D WEBCAM";
+			productName = DualCam;
+			productReference = 341AB7371AE9387F00D5D30A /* 3D WEBCAM.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		341AB72F1AE9387F00D5D30A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Shane Liesegang";
+				TargetAttributes = {
+					341AB7361AE9387F00D5D30A = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 341AB7321AE9387F00D5D30A /* Build configuration list for PBXProject "3D WEBCAM" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 341AB72E1AE9387F00D5D30A;
+			productRefGroup = 341AB7381AE9387F00D5D30A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				341AB7361AE9387F00D5D30A /* 3D WEBCAM */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		341AB7351AE9387F00D5D30A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				341AB7421AE9387F00D5D30A /* Images.xcassets in Resources */,
+				341AB7451AE9387F00D5D30A /* MainMenu.xib in Resources */,
+				BC2234D31C54C7EB005C91CD /* 2.mov in Resources */,
+				BC2234D21C54C7EB005C91CD /* 1.mov in Resources */,
+				341AB7611AE938D400D5D30A /* DualCamViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		341AB7331AE9387F00D5D30A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				341AB7601AE938D400D5D30A /* DualCamViewController.m in Sources */,
+				341AB7401AE9387F00D5D30A /* main.m in Sources */,
+				341AB73E1AE9387F00D5D30A /* AppDelegate.m in Sources */,
+				341AB75C1AE938AE00D5D30A /* CamView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		341AB7431AE9387F00D5D30A /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				341AB7441AE9387F00D5D30A /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		341AB7521AE9387F00D5D30A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		341AB7531AE9387F00D5D30A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		341AB7551AE9387F00D5D30A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DualCam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		341AB7561AE9387F00D5D30A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DualCam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		341AB7321AE9387F00D5D30A /* Build configuration list for PBXProject "3D WEBCAM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				341AB7521AE9387F00D5D30A /* Debug */,
+				341AB7531AE9387F00D5D30A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		341AB7541AE9387F00D5D30A /* Build configuration list for PBXNativeTarget "3D WEBCAM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				341AB7551AE9387F00D5D30A /* Debug */,
+				341AB7561AE9387F00D5D30A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 341AB72F1AE9387F00D5D30A /* Project object */;
+}
