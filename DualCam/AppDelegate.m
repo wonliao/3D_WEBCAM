@@ -86,9 +86,12 @@
     
 
     // Initial array of movie URLs
+    NSString* filePath1 = [[NSBundle mainBundle] pathForResource:@"1" ofType:@"mov"];
+    NSString* filePath2 = [[NSBundle mainBundle] pathForResource:@"2" ofType:@"mov"];
+    
     NSArray *myMovieURLs = [NSArray arrayWithObjects:
-                            [NSURL fileURLWithPath:@"/var/folders/g4/6brln56n3cgdbz9v3rm5lwg40000gn/T/1.mov"],
-                            [NSURL fileURLWithPath:@"/var/folders/g4/6brln56n3cgdbz9v3rm5lwg40000gn/T/2.mov"], nil];
+                            [NSURL fileURLWithPath:filePath1],
+                            [NSURL fileURLWithPath:filePath2], nil];
     
     // Create the composition & A/V tracks
     AVMutableComposition *comp =  [[AVMutableComposition alloc] init];// [AVMutableComposition composition];
@@ -140,7 +143,7 @@
      Use exportPresetsCompatibleWithAsset: to get a list of presets that are compatible with a specific asset.
      */
     NSLog(@"Compat presets you could use: %@", [AVAssetExportSession exportPresetsCompatibleWithAsset:comp]);
-    exporter = [[AVAssetExportSession alloc] initWithAsset:comp presetName:AVAssetExportPresetLowQuality];
+    exporter = [[AVAssetExportSession alloc] initWithAsset:comp presetName:AVAssetExportPresetPassthrough];
     
     
     [exporter setOutputURL:outputURL];
