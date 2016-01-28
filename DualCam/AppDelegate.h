@@ -8,7 +8,7 @@
 	CamView* cam1;
 	CamView* cam2;
 	DualCamViewController* dualCamViewController;
-    AVAssetExportSession *exporter;
+    //AVAssetExportSession *exporter;
     NSTimer *timer;
 }
 

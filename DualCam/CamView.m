@@ -90,7 +90,7 @@
         [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
     }
 
-    NSLog(@"recording to %@",fileUrl);
+    //NSLog(@"recording to %@",fileUrl);
     
     [captureSession addOutput:captureOutput];
 }
