@@ -77,119 +77,24 @@
     [cam2 stopVideoRecord];
 }
 
-
-
-/*
-// 合併檔案
--(IBAction)mergeVideoFile:(id)sender {
-    NSLog(@"mergeVideoFile");
-    
-
-    // Initial array of movie URLs
-    NSString* filePath1 = [[NSBundle mainBundle] pathForResource:@"left2" ofType:@"mov"];
-    NSString* filePath2 = [[NSBundle mainBundle] pathForResource:@"right2" ofType:@"mov"];
-    
-    NSArray *myMovieURLs = [NSArray arrayWithObjects:
-                            [NSURL fileURLWithPath:filePath1],
-                            [NSURL fileURLWithPath:filePath2], nil];
-    
-    // Create the composition & A/V tracks
-    AVMutableComposition *comp =  [[AVMutableComposition alloc] init];// [AVMutableComposition composition];
-    AVMutableCompositionTrack *compositionVideoTrack = [comp addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
-    AVMutableCompositionTrack *compositionAudioTrack = [comp addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
-    
-    // A reference for insertion start time
-    CMTime startTime = kCMTimeZero;
-    
-    for (int i=0; i< [myMovieURLs count]; i++){
-        // Get asset
-        NSURL *movieURL = [myMovieURLs objectAtIndex:i];
-        AVURLAsset *asset = [AVURLAsset URLAssetWithURL:movieURL options:nil];
-        
-        // Get video and audio tracks (assuming video exists - test for audio as an empty track will crash the program!) and insert in composition tracks
-        AVAssetTrack *videoTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
-        bool success = [compositionVideoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, [asset duration]) ofTrack:videoTrack atTime:startTime error:nil];
-        
-   
-        
-        if ([[asset tracksWithMediaType:AVMediaTypeAudio]count]){
-            AVAssetTrack *audioTrack = [[asset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0];
-            success = [compositionAudioTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, [asset duration]) ofTrack:audioTrack atTime:startTime error:nil];
-        }
-        
-        
-        // increment the start time to the end of this first video
-        startTime = CMTimeAdd(startTime, [asset duration]);
-    }
-    
-    
-    
-    //NSURL *tmpDirURL = [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
-    //NSURL *outputURL = [[tmpDirURL URLByAppendingPathComponent:@"output"] URLByAppendingPathExtension:@"mov"];
-    
-    
-    //Set the output URL
-    NSURL *outputURL = [NSURL fileURLWithPath:@"/var/folders/g4/6brln56n3cgdbz9v3rm5lwg40000gn/T/output.mov"];
-    [self removeFile:outputURL];
-
-    NSLog(@"Compat presets you could use: %@", [AVAssetExportSession exportPresetsCompatibleWithAsset:comp]);
-    exporter = [[AVAssetExportSession alloc] initWithAsset:comp presetName:AVAssetExportPresetPassthrough];
-    
-    
-    [exporter setOutputURL:outputURL];
-    [exporter setOutputFileType:AVFileTypeQuickTimeMovie];
-    [exporter setShouldOptimizeForNetworkUse:YES];
-    [exporter exportAsynchronouslyWithCompletionHandler:^(void){
-        switch ([exporter status]) {
-            case AVAssetExportSessionStatusFailed:
-                NSLog(@"Export failed: %@", [[exporter error] localizedDescription]);
-                break;
-            case AVAssetExportSessionStatusCancelled:
-                NSLog(@"Export canceled");
-                break;
-            default:
-                break;
-        }
-    }];
-    
-    // This is just a simple timer that will call a method to log the progress
-    timer=[NSTimer scheduledTimerWithTimeInterval:5
-                                           target:self
-                                         selector:@selector(monitorProgress)
-                                         userInfo:nil
-                                          repeats:YES];
-}
-
-- (void) removeFile:(NSURL *)fileURL
-{
-    NSString *filePath = [fileURL path];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:filePath]) {
-        NSError *error;
-        if ([fileManager removeItemAtPath:filePath error:&error] == NO) {
-            NSLog(@"removeItemAtPath %@ error:%@", filePath, error);
-        }
-    }
-}
-
-
--(void)monitorProgress{ 
-    if ([exporter progress] == 1.0){
-        [timer invalidate];
-    }
-    
-    NSLog(@"Progress: %f",[exporter progress]* 100);
-}
-*/
-
-
 // 合併檔案
 -(IBAction)mergeVideoFile:(id)sender {
     
-    //Here we load our movie Assets using AVURLAsset
+    NSURL *tmpDirURL = [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
     
-    AVURLAsset* firstAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"right2" ofType:@"mov"]] options:nil];
-    AVURLAsset * secondAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"left2" ofType:@"mov"]] options:nil];
+    NSURL *firstFileUrl = [[tmpDirURL URLByAppendingPathComponent:@"video_right"] URLByAppendingPathExtension:@"mov"];
+    NSURL *secondFileUrl = [[tmpDirURL URLByAppendingPathComponent:@"video_left"] URLByAppendingPathExtension:@"mov"];
+    NSLog(@"firstFileUrl(%@) secondFileUrl(%@)", [firstFileUrl path], [secondFileUrl path]);
+    
+    AVURLAsset* firstAsset = [AVURLAsset URLAssetWithURL:firstFileUrl options:nil];
+    AVURLAsset* secondAsset = [AVURLAsset URLAssetWithURL:secondFileUrl options:nil];
+    
+    CMTime minDuration;
+    if(firstAsset.duration.value <= secondAsset.duration.value) {
+        minDuration = firstAsset.duration;
+    } else {
+        minDuration = secondAsset.duration;
+    }
     
     //Create AVMutableComposition Object.This object will hold our multiple AVMutableCompositionTrack.
     AVMutableComposition* mixComposition = [[AVMutableComposition alloc] init];
@@ -197,31 +102,32 @@
     //Here we are creating the first AVMutableCompositionTrack.See how we are adding a new track to our AVMutableComposition.
     AVMutableCompositionTrack *firstTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
     //Now we set the length of the firstTrack equal to the length of the firstAsset and add the firstAsset to out newly created track at kCMTimeZero so video plays from the start of the track.
-    [firstTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, firstAsset.duration) ofTrack:[[firstAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0] atTime:kCMTimeZero error:nil];
+    [firstTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, minDuration) ofTrack:[[firstAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0] atTime:kCMTimeZero error:nil];
     
     //Now we repeat the same process for the 2nd track as we did above for the first track.
     AVMutableCompositionTrack *secondTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
-    [secondTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, secondAsset.duration) ofTrack:[[secondAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0] atTime:kCMTimeZero error:nil];
+    [secondTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, minDuration) ofTrack:[[secondAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0] atTime:kCMTimeZero error:nil];
+    
+    // 影片寬高
+    CGFloat vidoeWidth = firstTrack.naturalSize.width;
+    CGFloat vidoeHeight = firstTrack.naturalSize.height;
     
     //See how we are creating AVMutableVideoCompositionInstruction object.This object will contain the array of our AVMutableVideoCompositionLayerInstruction objects.You set the duration of the layer.You should add the lenght equal to the lingth of the longer asset in terms of duration.
-    
-    
     AVMutableVideoCompositionInstruction * MainInstruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
-    MainInstruction.timeRange = CMTimeRangeMake(kCMTimeZero, firstAsset.duration);
+    MainInstruction.timeRange = CMTimeRangeMake(kCMTimeZero, minDuration);
     
     //We will be creating 2 AVMutableVideoCompositionLayerInstruction objects.Each for our 2 AVMutableCompositionTrack.here we are creating AVMutableVideoCompositionLayerInstruction for out first track.see how we make use of Affinetransform to move and scale our First Track.so it is displayed at the bottom of the screen in smaller size.(First track in the one that remains on top).
     //Note: You have to apply transformation to scale and move according to your video size.
     AVMutableVideoCompositionLayerInstruction *FirstlayerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:firstTrack];
-    CGAffineTransform Scale = CGAffineTransformMakeScale(0.2f,0.2f);
-    CGAffineTransform Move = CGAffineTransformMakeTranslation(320,0);
+    CGAffineTransform Scale = CGAffineTransformMakeScale(0.5f,0.5f);
+    CGAffineTransform Move = CGAffineTransformMakeTranslation(vidoeWidth/2.0f,0);
     [FirstlayerInstruction setTransform:CGAffineTransformConcat(Scale,Move) atTime:kCMTimeZero];
     
     //Here we are creating AVMutableVideoCompositionLayerInstruction for out second track.see how we make use of Affinetransform to move and scale our second Track.
     AVMutableVideoCompositionLayerInstruction *SecondlayerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:secondTrack];
-    CGAffineTransform SecondScale = CGAffineTransformMakeScale(0.2f,0.2f);
+    CGAffineTransform SecondScale = CGAffineTransformMakeScale(0.5f,0.5f);
     CGAffineTransform SecondMove = CGAffineTransformMakeTranslation(0,0);
     [SecondlayerInstruction setTransform:CGAffineTransformConcat(SecondScale,SecondMove) atTime:kCMTimeZero];
-    
     
     //Now we add our 2 created AVMutableVideoCompositionLayerInstruction objects to our AVMutableVideoCompositionInstruction in form of an array.
     MainInstruction.layerInstructions = [NSArray arrayWithObjects:FirstlayerInstruction,SecondlayerInstruction,nil];;
@@ -230,14 +136,12 @@
     AVMutableVideoComposition *MainCompositionInst = [AVMutableVideoComposition videoComposition];
     MainCompositionInst.instructions = [NSArray arrayWithObject:MainInstruction];
     MainCompositionInst.frameDuration = CMTimeMake(1, 30);
-    MainCompositionInst.renderSize = CGSizeMake(640, 480);
+    MainCompositionInst.renderSize = CGSizeMake(vidoeWidth, vidoeHeight/2.0f);
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *myPathDocs =  [documentsDirectory stringByAppendingPathComponent:@"overlapVideo.mov"];
-    
-    
-    
+
     if([[NSFileManager defaultManager] fileExistsAtPath:myPathDocs])
     {
         [[NSFileManager defaultManager] removeItemAtPath:myPathDocs error:nil];
@@ -257,6 +161,7 @@
          });
      }];
 }
+
 //here you have the outputURL of the final overlapped vide0. add your desired task here.
 - (void)exportDidFinish:(AVAssetExportSession*)session
 {
@@ -264,9 +169,7 @@
     NSLog(@"%li", (long)session.status);
     NSLog(@"%@", session.error);
     NSURL *outputURL = session.outputURL;
-    
     NSLog(@"outputURL(%@)", outputURL.relativePath);
-    //[self setMoviePlayer:outputURL];
 }
 
 @end

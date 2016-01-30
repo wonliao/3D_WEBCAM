@@ -85,12 +85,14 @@
     NSURL *tmpDirURL = [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
     fileUrl = [[tmpDirURL URLByAppendingPathComponent:outputFileName] URLByAppendingPathExtension:@"mov"];
     filePath = [fileUrl path];
+    /*
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         
         [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
     }
+    */
 
-    //NSLog(@"recording to %@",fileUrl);
+    NSLog(@"recording to %@",fileUrl);
     
     [captureSession addOutput:captureOutput];
 }

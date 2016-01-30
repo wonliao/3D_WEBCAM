@@ -17,8 +17,6 @@
 		BC2234CC1C54C589005C91CD /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2234CB1C54C589005C91CD /* CoreMedia.framework */; };
 		BC2234CF1C54C73A005C91CD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2234C71C54C549005C91CD /* AVFoundation.framework */; };
 		BC2234D41C54D3A6005C91CD /* MediaLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2234C91C54C561005C91CD /* MediaLibrary.framework */; };
-		BC47E2121C57C9CE00085B32 /* left2.mov in Resources */ = {isa = PBXBuildFile; fileRef = BC47E2111C57C9CE00085B32 /* left2.mov */; };
-		BC47E2141C57CA3500085B32 /* right2.mov in Resources */ = {isa = PBXBuildFile; fileRef = BC47E2131C57CA3500085B32 /* right2.mov */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +36,6 @@
 		BC2234C91C54C561005C91CD /* MediaLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaLibrary.framework; path = System/Library/Frameworks/MediaLibrary.framework; sourceTree = SDKROOT; };
 		BC2234CB1C54C589005C91CD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		BC2234CD1C54C5BC005C91CD /* MediaToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaToolbox.framework; path = System/Library/Frameworks/MediaToolbox.framework; sourceTree = SDKROOT; };
-		BC47E2111C57C9CE00085B32 /* left2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = left2.mov; sourceTree = "<group>"; };
-		BC47E2131C57CA3500085B32 /* right2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = right2.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +92,6 @@
 		341AB73A1AE9387F00D5D30A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BC47E2131C57CA3500085B32 /* right2.mov */,
-				BC47E2111C57C9CE00085B32 /* left2.mov */,
 				341AB73B1AE9387F00D5D30A /* Info.plist */,
 				341AB73F1AE9387F00D5D30A /* main.m */,
 			);
@@ -162,9 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				341AB7421AE9387F00D5D30A /* Images.xcassets in Resources */,
-				BC47E2141C57CA3500085B32 /* right2.mov in Resources */,
 				341AB7451AE9387F00D5D30A /* MainMenu.xib in Resources */,
-				BC47E2121C57C9CE00085B32 /* left2.mov in Resources */,
 				341AB7611AE938D400D5D30A /* DualCamViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
