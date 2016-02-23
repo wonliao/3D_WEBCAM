@@ -75,6 +75,9 @@
     NSLog(@"stopRecode");
     [cam1 stopVideoRecord];
     [cam2 stopVideoRecord];
+    
+    [cam1 stopRunning];
+    [cam2 stopRunning];
 }
 
 // 合併檔案

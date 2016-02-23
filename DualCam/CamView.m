@@ -43,7 +43,8 @@
 }
 
 -(void)showCamera:(AVCaptureDevice*)dev {
-	[captureSession stopRunning];
+	
+    [captureSession stopRunning];
 	
 	for (id i in [captureSession inputs]) {
 		if ([i isKindOfClass:[AVCaptureInput class]]) {
@@ -51,11 +52,15 @@
 			[captureSession removeInput:input];
 		}
 	}
+    
 	AVCaptureDeviceInput* cap = [AVCaptureDeviceInput deviceInputWithDevice:dev error:nil];
-	[captureSession addInput:cap];
-	[captureSession startRunning];
+    if([captureSession canAddInput:cap]) {
 	
-	previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        [captureSession addInput:cap];
+        [captureSession startRunning];
+        
+        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    }
 }
 
 
@@ -85,15 +90,13 @@
     NSURL *tmpDirURL = [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
     fileUrl = [[tmpDirURL URLByAppendingPathComponent:outputFileName] URLByAppendingPathExtension:@"mov"];
     filePath = [fileUrl path];
-    /*
+
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         
         [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
     }
-    */
 
     NSLog(@"recording to %@",fileUrl);
-    
     [captureSession addOutput:captureOutput];
 }
 
@@ -110,8 +113,13 @@
 -(void)stopVideoRecord
 {
     NSLog(@"stopVideoRecord");
-    [captureSession stopRunning];
     [captureOutput stopRecording];
+}
+
+-(void)stopRunning
+{
+    NSLog(@"stopRunning");
+    [captureSession stopRunning];
 }
 
 

@@ -17,6 +17,7 @@
 
 -(void)startVideoRecord;
 -(void)stopVideoRecord;
+-(void)stopRunning;
 -(void)outputFile:(NSString *) outputFileName;
 
 @end
